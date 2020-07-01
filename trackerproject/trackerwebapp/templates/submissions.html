@@ -13,15 +13,31 @@
 
     <article class="submissions">
         <section class="submission__headers">
-            <div class="header header--student">Student</div>
-            <div class="header header--classroom">Classroom</div>
-            <div class="header header--exercise">Exercise</div>
-            <div class="header header--date">Date</div>
+            <div class="header header--student">
+                <a class="link--sort" href="{% url 'submission_list' %}?order_by=student&direction=asc"> ⬆ </a>
+                Student
+                <a class="link--sort" href="{% url 'submission_list' %}?order_by=student&direction=desc"> ⬇ </a>
+            </div>
+            <div class="header header--classroom">
+                <a class="link--sort" href="{% url 'submission_list' %}?order_by=classroom&direction=asc"> ⬆ </a>
+                Classroom
+                <a class="link--sort" href="{% url 'submission_list' %}?order_by=classroom&direction=desc"> ⬇ </a>
+            </div>
+            <div class="header header--exercise">
+                <a class="link--sort" href="{% url 'submission_list' %}?order_by=exercise&direction=asc"> ⬆ </a>
+                Exercise
+                <a class="link--sort" href="{% url 'submission_list' %}?order_by=exercise&direction=desc"> ⬇ </a>
+            </div>
+            <div class="header header--date">
+                <a class="link--sort" href="{% url 'submission_list' %}?order_by=time_submitted&direction=asc"> ⬆ </a>
+                Date
+                <a class="link--sort" href="{% url 'submission_list' %}?order_by=time_submitted&direction=desc"> ⬇ </a>
+            </div>
         </section>
         {% for submission in all_submissions %}
         <section class="submission">
             <div class="submission__student">
-                {{ submission.student.first_name }} {{ submission.student.last_name }}
+                <a href="{% url 'student_report' submission.student.id %}">{{ submission.student.first_name }} {{ submission.student.last_name }}</a>
             </div>
             <div class="submission__classroom">
                 {{ submission.classroom.title }}
@@ -30,7 +46,7 @@
                 {{ submission.exercise }}
             </div>
             <div class="submission__timestamp">
-                {{ submission.time_submitted|date:"M d, Y" }}
+                {{ submission.time_submitted|date:"M d, Y H:i" }}
             </div>
         </section>
         {% endfor %}

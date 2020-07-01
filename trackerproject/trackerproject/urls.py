@@ -18,9 +18,10 @@ from django.urls import path
 from trackerwebapp.models import *
 from trackerwebapp.views import *
 
-app_name = "trackerwebapp"
+app_name = "tracker"
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('submission/', submission, name='submission'),
-    path('submissions/', submission_list, name='submissions'),
+    path('submission/', submission, name='submission_hook'),
+    path('students/<int:student_id>/', student_report, name='student_report'),
+    path('submissions/', submission_list, name='submission_list'),
 ]

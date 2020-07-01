@@ -18,6 +18,11 @@ h1,h2,h3,h4,h5,h6 {
   letter-spacing: 2px;
 }
 
+.link--sort {
+    text-decoration: none;
+    color: #fee3b5;
+}
+
 .submission__headers {
     display: flex;
     flex-direction: row;

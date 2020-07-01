@@ -9,17 +9,22 @@ def submission_list(request):
         all_submissions = Submission.objects.all()
 
         if order is not None:
-            order_filter = order
+            if order == "student":
+                order_filter = "student__last_name"
+            else:
+                order_filter = order
 
             if direction is not None:
                 if direction == "desc":
-                    order_filter = '-{}'.format(order)
+                    order_filter = '-{}'.format(order_filter)
 
             all_submissions = all_submissions.order_by(order_filter)
 
         template = 'submissions.html'
         context = {
-            'all_submissions': all_submissions
+            'all_submissions': all_submissions,
+            'order': order,
+            'direction': direction
         }
 
         return render(request, template, context)
