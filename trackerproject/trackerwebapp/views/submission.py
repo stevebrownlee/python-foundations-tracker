@@ -8,7 +8,6 @@ from ..models import Student, Classroom, Submission
 @csrf_exempt
 def submission(request):
     sub = json.loads(request.body.decode("utf-8"))
-    print(sub)
 
     try:
         student = Student.objects.get(replit_id=sub['student']['id'])

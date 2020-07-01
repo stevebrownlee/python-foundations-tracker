@@ -18,6 +18,11 @@
                 Student
                 <a class="link--sort" href="{% url 'submission_list' %}?order_by=student&direction=desc"> ⬇ </a>
             </div>
+            <div class="header header--cohort">
+                <a class="link--sort" href="{% url 'submission_list' %}?order_by=cohort&direction=asc"> ⬆ </a>
+                Cohort
+                <a class="link--sort" href="{% url 'submission_list' %}?order_by=cohort&direction=desc"> ⬇ </a>
+            </div>
             <div class="header header--classroom">
                 <a class="link--sort" href="{% url 'submission_list' %}?order_by=classroom&direction=asc"> ⬆ </a>
                 Classroom
@@ -38,6 +43,9 @@
         <section class="submission">
             <div class="submission__student">
                 <a href="{% url 'student_report' submission.student.id %}">{{ submission.student.first_name }} {{ submission.student.last_name }}</a>
+            </div>
+            <div class="submission__cohort">
+                {{ submission.student.cohort }}
             </div>
             <div class="submission__classroom">
                 {{ submission.classroom.title }}

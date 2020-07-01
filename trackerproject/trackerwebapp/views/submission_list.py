@@ -14,6 +14,11 @@ def submission_list(request):
             else:
                 order_filter = order
 
+            if order == "cohort":
+                order_filter = "student__cohort"
+            else:
+                order_filter = order
+
             if direction is not None:
                 if direction == "desc":
                     order_filter = '-{}'.format(order_filter)

@@ -5,10 +5,31 @@
     <meta charset="utf-8">
     <title>Library</title>
     <link rel="stylesheet" href="http://nss.team/tracker/submissions.css">
+    <link rel="stylesheet" href="http://nss.team/tracker/report.css">
   </head>
   <body>
-    <h1>{{ student.first_name }} {{ student.last_name }}</h1>
+    < <a href="{% url 'submission_list' %}">Back to list</a>
+    <h1>Report for: {{ student.first_name }} {{ student.last_name }}</h1>
 
+    <form action="{% url 'student_update' %}" method="post">
+        {% csrf_token %}
+        <input type="hidden" value="{{ student.id }}" name="student" />
+        Cohort: <input class="input--cohort" value="{{ student.cohort }}" name="cohort" placeholder="Cohort (e.g. c42 or e13)" />
+        <button>Update</button>
+    </form>
+
+    <h2>Scores</h2>
+    <report>
+        <classroom>Intro to Variables: {{ scores.intro_variables_percent|stringformat:"d%%" }}</classroom>
+        <classroom>Intro to Arrays: {{ scores.intro_iteration_percent|stringformat:"d%%" }}</classroom>
+        <classroom>Intro to Objects: {{ scores.intro_objects_percent|stringformat:"d%%" }}</classroom>
+        <classroom>Intro to Functions: {{ scores.intro_functions_percent|stringformat:"d%%" }}</classroom>
+        <classroom>Conditions Practice: {{ scores.condition_percent|stringformat:"d%%" }}</classroom>
+        <classroom>Arrays Practice: {{ scores.iteration_percent|stringformat:"d%%" }}</classroom>
+        <classroom>Functions Practice: {{ scores.function_percent|stringformat:"d%%" }}</classroom>
+    </report>
+
+    <h2>Submission History</h2>
     {% for submission in submissions %}
     <section class="submission">
         <div class="submission__classroom">
