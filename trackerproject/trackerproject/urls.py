@@ -18,7 +18,7 @@ from django.urls import path
 from trackerwebapp.models import *
 from trackerwebapp.views import *
 
-
+app_name = "trackerwebapp"
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('submission/', submission, name='submission'),

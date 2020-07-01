@@ -18,6 +18,36 @@ h1,h2,h3,h4,h5,h6 {
   letter-spacing: 2px;
 }
 
+.submission__headers {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    border: 1px dotted lightslategray;
+    padding: 1rem;
+    background-color: chocolate;
+    color: #ffd07e;
+}
+
+.header {
+    font-weight: bold;
+    font-size: larger;
+}
+
+.header--student {
+    flex: 2
+}
+
+.header--classroom {
+    flex: 3
+}
+
+.header--exercise {
+    flex: 3
+}
+
+.header--date {
+    flex: 1
+}
 
 .submission {
     display: flex;
@@ -28,15 +58,15 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 .submission__student {
-    flex: 1
+    flex: 2
 }
 
 .submission__classroom {
-    flex: 2
+    flex: 3
 }
 
 .submission__exercise {
-    flex: 2
+    flex: 3
 }
 
 .submission__timestamp {

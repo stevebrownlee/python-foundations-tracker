@@ -1,18 +1,24 @@
 {% load staticfiles %}
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title>Foundations Tracker</title>
     <link rel="stylesheet" href="http://nss.team/tracker/submissions.css">
-  </head>
-  <body>
+</head>
+
+<body>
     <h1>Submissions</h1>
 
     <article class="submissions">
-
-    </article>
-    {% for submission in all_submissions %}
+        <section class="submission__headers">
+            <div class="header header--student">Student</div>
+            <div class="header header--classroom">Classroom</div>
+            <div class="header header--exercise">Exercise</div>
+            <div class="header header--date">Date</div>
+        </section>
+        {% for submission in all_submissions %}
         <section class="submission">
             <div class="submission__student">
                 {{ submission.student.first_name }} {{ submission.student.last_name }}
@@ -24,9 +30,11 @@
                 {{ submission.exercise }}
             </div>
             <div class="submission__timestamp">
-                {{ submission.time_submitted }}
+                {{ submission.time_submitted|date:"M d, Y" }}
             </div>
         </section>
-    {% endfor %}
-  </body>
+        {% endfor %}
+    </article>
+</body>
+
 </html>
