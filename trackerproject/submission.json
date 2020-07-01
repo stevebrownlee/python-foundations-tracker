@@ -1,0 +1,33 @@
+{
+    "assignment": {
+        "name": "Introduction and Syntax",
+        "id": 5500942,
+        "type": "unit_test"
+    },
+    "event_name": "student_submits_assignment",
+    "student": {
+        "last_name": "Classroom",
+        "first_name": "NSS",
+        "id": 981115,
+        "email": "steve.brownlee@nashvillesoftwareschool.com"
+    },
+    "submission": {
+        "time_created": "2020-07-01T13: 59: 07.970Z",
+        "id": 13220987,
+        "teacher_url": "https: //repl.it/teacher/submissions/13220987",
+        "files": [
+            {
+                "name": "main.js",
+                "content": "const fillGasTank = (gallons) => {\n\tconsole.log(`I filled the tank with ${gallons} of gas`)\n}\n\nfillGasTank(15)"
+            }
+        ],
+        "time_submitted": "2020-07-01T13:59:11.367Z",
+        "status": "complete",
+        "student_url": "https://repl.it/student/submissions/13220987"
+    },
+    "classroom": {
+        "name": "Introduction to Functions (Clone)",
+        "webhook_secret": "2b1567e7-7504-4d8c-98f4-a2c104149ffd",
+        "id": 199569
+    }
+}
