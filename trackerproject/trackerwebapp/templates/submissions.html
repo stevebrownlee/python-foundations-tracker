@@ -1,14 +1,7 @@
-{% load staticfiles %}
-<!DOCTYPE html>
-<html>
+{% extends 'shared/base.html' %}
 
-<head>
-    <meta charset="utf-8">
-    <title>Foundations Tracker</title>
-    <link rel="stylesheet" href="http://nss.team/tracker/submissions.css">
-</head>
+{% block content %}
 
-<body>
     <h1>Submissions</h1>
 
     <article class="submissions">
@@ -45,7 +38,20 @@
                 <a href="{% url 'student_report' submission.student.id %}">{{ submission.student.first_name }} {{ submission.student.last_name }}</a>
             </div>
             <div class="submission__cohort">
-                <a href="{% url 'cohort_report' submission.student.cohort.id %}">{{ submission.student.cohort.name }}</a>
+                {% if submission.student.cohort.id is not None %}
+                    <a href="{% url 'cohort_report' submission.student.cohort.id %}">{{ submission.student.cohort.name }}</a>
+                {% else %}
+                    <form class="cohortForm--{{ submission.id }}" action="{% url 'quick_student_update' %}" method="post">
+                        {% csrf_token %}
+                        <select name="cohortSelect" class="cohortSelect" id="cohortSelect--{{ submission.id }}">
+                            <option value="">Assign...</option>
+                            {% for cohort in all_cohorts %}
+                                <option value="{{ cohort.id }}">{{ cohort.name }}</option>
+                            {% endfor %}
+                        </select>
+                        <input type="hidden" value="{{ submission.student.id }}" name="student" />
+                    </form>
+                {% endif %}
             </div>
             <div class="submission__classroom">
                 {{ submission.classroom.title }}
@@ -59,6 +65,15 @@
         </section>
         {% endfor %}
     </article>
-</body>
 
-</html>
+{% endblock %}
+
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="http://nss.team/tracker/submissions.css">
+{% endblock %}
+
+{% block scripts %}
+    <script src="/static/scripts/dashboard.js"></script>
+{% endblock %}
+

@@ -21,9 +21,13 @@ from trackerwebapp.views import *
 app_name = "tracker"
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', dashboard, name='dashboard'),
+    path('cohort/form', cohort_form, name='cohort_form'),
     path('submission/', submission, name='submission_hook'),
     path('students/<int:student_id>/', student_report, name='student_report'),
+    path('cohorts/', cohorts, name='cohorts'),
     path('cohorts/<int:cohort_id>/', cohort_report, name='cohort_report'),
     path('submissions/', submission_list, name='submission_list'),
     path('studentupdate/', student_update, name='student_update'),
+    path('quickupdate/', quick_student_update, name='quick_student_update'),
 ]

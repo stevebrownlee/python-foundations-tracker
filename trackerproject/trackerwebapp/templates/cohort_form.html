@@ -1,0 +1,18 @@
+{% extends 'shared/base.html' %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="/static/dashboard.css">
+{% endblock %}
+
+{% block content %}
+    <h1>New Cohort</h1>
+
+    <form action="{% url 'cohorts' %}" method="post">
+        {% csrf_token %}
+        <fieldset>
+            <label for="title">Cohort name: </label>
+            <input type="text" autofocus name="name" style="width:24rem;" placeholder="e.g. Day Cohort 43 or Evening Cohort 14" />
+            <input type="submit" value="Add It" />
+        </fieldset>
+    </form>
+{% endblock %}

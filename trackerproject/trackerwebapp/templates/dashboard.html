@@ -1,0 +1,27 @@
+{% extends 'shared/base.html' %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="/static/dashboard.css">
+{% endblock %}
+
+{% block content %}
+
+    <h1 style="text-align: center;">Foundations Course Progress Tracker</h1>
+
+    <a href="{% url 'cohort_form' %}" style="text-decoration: none; color:#404040;">
+        <article class="add-cohort">
+            <div>Add New Cohort</div>
+            <div class="giant">+</div>
+        </article>
+    </a>
+
+    <article class="cohorts">
+        {% for cohort in cohorts %}
+        <section class="cohort">
+            <h1 class="cohort__name"><a href="{% url 'cohort_report' cohort.id %}">{{ cohort.name }}</a></h1>
+            <div class="cohort__studentCount">{{ cohort.student_count }} students</div>
+        </section>
+        {% endfor %}
+    </article>
+
+{% endblock %}

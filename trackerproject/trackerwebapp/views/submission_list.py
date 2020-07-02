@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from ..models import Submission
+from ..models import Submission, Cohort
 
 def submission_list(request):
     if request.method == 'GET':
@@ -7,6 +7,7 @@ def submission_list(request):
         direction = request.GET.get('direction', None)
 
         all_submissions = Submission.objects.all().order_by('-time_submitted')
+        all_cohorts = Cohort.objects.all().order_by('-name')
 
         if order is not None:
             if order == "student":
@@ -29,6 +30,7 @@ def submission_list(request):
         context = {
             'all_submissions': all_submissions[:50],
             'order': order,
+            'all_cohorts': all_cohorts,
             'direction': direction
         }
 

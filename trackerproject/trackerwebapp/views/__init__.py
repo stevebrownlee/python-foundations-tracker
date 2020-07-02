@@ -2,4 +2,8 @@ from .submission import submission
 from .submission_list import submission_list
 from .student_report import student_report
 from .cohort_report import cohort_report
+from .cohort_form import cohort_form
+from .cohorts import cohorts
 from .student_update import student_update
+from .student_update import quick_student_update
+from .dashboard import dashboard

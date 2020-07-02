@@ -1,12 +1,9 @@
-{% load staticfiles %}
-<!DOCTYPE html>
-<html>
+{% extends 'shared/base.html' %}
 
-<head>
-    <meta charset="utf-8">
-    <title>Library</title>
+{% block stylesheets %}
     <link rel="stylesheet" href="http://nss.team/tracker/submissions.css">
     <link rel="stylesheet" href="http://nss.team/tracker/report.css">
+
     <style>
         .report {
             display:flex;
@@ -42,10 +39,11 @@
             font-size: 1rem;
         }
     </style>
-</head>
+{% endblock %}
 
-<body>
-    < <a href="{% url 'submission_list' %}">Back to list</a>
+{% block content %}
+
+
     <h1>Report for: {{ cohort.name }}</h1>
 
     <article class="report">
@@ -79,6 +77,4 @@
         {% endfor %}
     </article>
 
-</body>
-
-</html>
+{% endblock %}

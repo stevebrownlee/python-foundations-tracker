@@ -1,14 +1,11 @@
-{% load staticfiles %}
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Library</title>
+{% extends 'shared/base.html' %}
+
+{% block stylesheets %}
     <link rel="stylesheet" href="http://nss.team/tracker/submissions.css">
     <link rel="stylesheet" href="http://nss.team/tracker/report.css">
-  </head>
-  <body>
-    < <a href="{% url 'submission_list' %}">Back to list</a>
+{% endblock %}
+
+{% block content %}
     <h1>Report for: {{ student.first_name }} {{ student.last_name }}</h1>
 
     <form action="{% url 'student_update' %}" method="post">
@@ -49,5 +46,4 @@
     </section>
     {% endfor %}
 
-  </body>
-</html>
+{% endblock %}
