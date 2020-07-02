@@ -6,7 +6,7 @@ def submission_list(request):
         order = request.GET.get('order_by', None)
         direction = request.GET.get('direction', None)
 
-        all_submissions = Submission.objects.all()
+        all_submissions = Submission.objects.all().order_by('-time_submitted')
 
         if order is not None:
             if order == "student":
