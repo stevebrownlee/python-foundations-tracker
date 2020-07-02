@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from ..models import Submission, Student
+from ..models import Submission, Student, Cohort
 
 VARIABLES_INTRO_CLASSROOM_EXERCISES = 7
 ARRAYS_INTRO_CLASSROOM_EXERCISES = 11
@@ -18,7 +18,6 @@ def student_report(request, student_id):
         variables_intro_exercises = set()
         iteration_intro_exercises = set()
         objects_intro_exercises = set()
-
 
         student = Student.objects.get(pk=student_id)
         submissions = Submission.objects.filter(student=student)
@@ -51,16 +50,17 @@ def student_report(request, student_id):
         scores['intro_objects_percent'] = len(objects_intro_exercises) / OBJECTS_INTRO_CLASSROOM_EXERCISES * 100
         scores['intro_variables_percent'] = len(variables_intro_exercises) / VARIABLES_INTRO_CLASSROOM_EXERCISES * 100
 
-
-
-
         submissions.order_by('time_submitted')
+
+        cohorts = Cohort.objects.all().order_by('name')
+
 
         template = 'report.html'
         context = {
             'student': student,
             'submissions': submissions,
             'scores': scores,
+            'cohorts': cohorts,
         }
 
         return render(request, template, context)

@@ -13,8 +13,13 @@
 
     <form action="{% url 'student_update' %}" method="post">
         {% csrf_token %}
+        Cohort: <select name="cohort">
+            <option value="">Choose student's cohort...</option>
+            {% for cohort in cohorts %}
+                <option {% if student.cohort.id == cohort.id %}selected{% endif %} value="{{ cohort.id }}">{{ cohort.name }}</option>
+            {% endfor %}
+        </select>
         <input type="hidden" value="{{ student.id }}" name="student" />
-        Cohort: <input class="input--cohort" value="{{ student.cohort }}" name="cohort" placeholder="Cohort (e.g. c42 or e13)" />
         <button>Update</button>
     </form>
 
