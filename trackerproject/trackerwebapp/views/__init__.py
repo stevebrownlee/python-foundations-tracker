@@ -7,3 +7,4 @@ from .cohorts import cohorts
 from .student_update import student_update
 from .student_update import quick_student_update
 from .dashboard import dashboard
+from .student_list import student_list

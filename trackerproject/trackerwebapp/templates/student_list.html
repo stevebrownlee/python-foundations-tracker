@@ -1,0 +1,51 @@
+{% extends 'shared/base.html' %}
+
+{% block content %}
+
+    <h1>Students</h1>
+
+    <article class="submissions">
+        <section class="submission__headers">
+            <div class="header header--student">
+                Student
+            </div>
+            <div class="header header--cohort">
+                Cohort
+            </div>
+        </section>
+        {% for student in students %}
+        <section class="submission">
+            <div class="submission__student">
+                <a href="{% url 'student_report' student.id %}">{{ student.first_name }} {{ student.last_name }}</a>
+            </div>
+            <div class="submission__cohort">
+                {% if student.cohort.id is not None %}
+                    <a href="{% url 'cohort_report' student.cohort.id %}">{{ student.cohort.name }}</a>
+                {% else %}
+                    <form class="cohortForm--{{ student.id }}" action="{% url 'quick_student_update' %}" method="post">
+                        {% csrf_token %}
+                        <select name="cohortSelect" class="cohortSelect" id="cohortSelect--{{ student.id }}">
+                            <option value="">Assign...</option>
+                            {% for cohort in cohorts %}
+                                <option value="{{ cohort.id }}">{{ cohort.name }}</option>
+                            {% endfor %}
+                        </select>
+                        <input type="hidden" value="{{ student.id }}" name="student" />
+                    </form>
+                {% endif %}
+            </div>
+        </section>
+        {% endfor %}
+    </article>
+
+{% endblock %}
+
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="http://nss.team/tracker/submissions.css">
+{% endblock %}
+
+{% block scripts %}
+    <script src="http://nss.team/tracker/scripts/dashboard.js"></script>
+{% endblock %}
+
