@@ -24,7 +24,6 @@ def student_report(request, student_id):
 
         submissions.order_by('classroom')
         for submission in submissions:
-            print(submission.classroom.title)
             if submission.classroom.title == 'Iteration with JavaScript':
                 iteration_exercises.add(submission.exercise)
             if submission.classroom.title == 'JavaScript Conditions':

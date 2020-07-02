@@ -1,0 +1,84 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Library</title>
+    <link rel="stylesheet" href="http://nss.team/tracker/submissions.css">
+    <link rel="stylesheet" href="http://nss.team/tracker/report.css">
+    <style>
+        .report {
+            display:flex;
+            flex-direction: column;
+        }
+
+        .report__student {
+            display: flex;
+            flex-direction: row;
+            border: 1px dotted lightslategray;
+            align-items: center;
+        }
+
+        .item {
+            flex: 1;
+            padding: 0.5rem;
+        }
+
+        .good {
+            background-color: lawngreen;
+        }
+
+        .soso {
+            background-color: gold;
+        }
+
+        .bad {
+            background-color: rgb(255, 123, 123);
+        }
+
+        .header--report {
+            flex: 1;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    < <a href="{% url 'submission_list' %}">Back to list</a>
+    <h1>Report for: {{ cohort.name }}</h1>
+
+    <article class="report">
+        <section class="submission__headers">
+            <div class="header--report">
+                Student
+            </div>
+            <div class="header--report">
+                Completion Percentage
+            </div>
+        </section>
+
+        {% for summary in student_summaries %}
+            <section class="report__student">
+                <div class="item">
+                    <a href="{% url 'student_report' summary.student.id %}">
+                        {{ summary.student.first_name }} {{ summary.student.last_name }}
+                    </a>
+                </div>
+                <div class="item
+                    {% if summary.completion_percentage >= 7 %}
+                        good
+                    {% elif summary.completion_percentage > 4 %}
+                        soso
+                    {% else  %}
+                        bad
+                    {% endif %}
+                    "
+                >Completion: {{ summary.completion_percentage|stringformat:"d%%" }}</div>
+            </section>
+        {% endfor %}
+    </article>
+
+</body>
+
+</html>

@@ -45,7 +45,7 @@
                 <a href="{% url 'student_report' submission.student.id %}">{{ submission.student.first_name }} {{ submission.student.last_name }}</a>
             </div>
             <div class="submission__cohort">
-                {{ submission.student.cohort.name }}
+                <a href="{% url 'cohort_report' submission.student.cohort.id %}">{{ submission.student.cohort.name }}</a>
             </div>
             <div class="submission__classroom">
                 {{ submission.classroom.title }}

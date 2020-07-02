@@ -27,7 +27,7 @@ def submission_list(request):
 
         template = 'submissions.html'
         context = {
-            'all_submissions': all_submissions,
+            'all_submissions': all_submissions[:50],
             'order': order,
             'direction': direction
         }
