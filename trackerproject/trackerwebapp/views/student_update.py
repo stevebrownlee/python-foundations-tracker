@@ -18,8 +18,9 @@ def student_update(request):
 
 def quick_student_update(request):
     if request.method == 'POST':
+        redirect_to = request.POST.get('view')
         cohort = request.POST.get('cohortSelect', None)
         student_id = request.POST.get('student', None)
         update(student_id, cohort)
 
-        return redirect(reverse('submission_list'))
+        return redirect(reverse(redirect_to))
