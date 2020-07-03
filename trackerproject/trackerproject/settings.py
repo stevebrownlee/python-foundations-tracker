@@ -119,4 +119,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/usr/share/nginx/html/tracker'
+STATIC_ROOT = '/var/www/tracker/static'

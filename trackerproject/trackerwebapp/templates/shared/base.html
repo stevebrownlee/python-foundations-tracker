@@ -1,4 +1,5 @@
-{% load staticfiles %}
+{% load static %}
+
 <!DOCTYPE html>
 <html>
 
@@ -7,7 +8,7 @@
     <title>Foundation Tracker</title>
     {% block stylesheets %}
     {% endblock %}
-    <link rel="stylesheet" href="http://nss.team/tracker/main.css">
+    <link rel="stylesheet" href="{% static 'main.css' %}">
 </head>
 
 <body>

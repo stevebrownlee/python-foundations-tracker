@@ -69,12 +69,13 @@
 
 {% endblock %}
 
+{% load static %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="http://nss.team/tracker/submissions.css">
+    <link rel="stylesheet" href="{% static 'submissions.css' %}">
 {% endblock %}
 
 {% block scripts %}
-    <script src="http://nss.team/tracker/scripts/dashboard.js"></script>
+    <script src="{% static 'dashboard.js' %}"></script>
 {% endblock %}
 

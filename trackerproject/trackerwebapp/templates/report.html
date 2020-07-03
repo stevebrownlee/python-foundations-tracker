@@ -1,8 +1,9 @@
 {% extends 'shared/base.html' %}
+{% load static %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="http://nss.team/tracker/submissions.css">
-    <link rel="stylesheet" href="http://nss.team/tracker/report.css">
+    <link rel="stylesheet" href="{% static 'submissions.css' %}">
+    <link rel="stylesheet" href="{% static 'report.css' %}">
 {% endblock %}
 
 {% block content %}

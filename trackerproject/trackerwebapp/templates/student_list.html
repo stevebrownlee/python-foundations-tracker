@@ -1,4 +1,5 @@
 {% extends 'shared/base.html' %}
+{% load static %}
 
 {% block content %}
 
@@ -43,10 +44,10 @@
 
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="http://nss.team/tracker/submissions.css">
+    <link rel="stylesheet" href="{% static 'submissions.css' %}">
 {% endblock %}
 
 {% block scripts %}
-    <script src="http://nss.team/tracker/scripts/dashboard.js"></script>
+    <script src="{% static 'scripts/dashboard.js' %}"></script>
 {% endblock %}
 
