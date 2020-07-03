@@ -8,3 +8,4 @@ from .student_update import student_update
 from .student_update import quick_student_update
 from .dashboard import dashboard
 from .student_list import student_list
+from .student_withdrawal import student_withdrawal

@@ -22,6 +22,20 @@
         <button>Update</button>
     </form>
 
+    <h2>Withdrawal</h2>
+    <form action="{% url 'student_withdrawal' %}" method="post">
+        {% csrf_token %}
+        Cohort: <select name="withdrawal">
+            <option value="">< Choose reason ></option>
+            <option value="null">Withdrawn</option>
+            {% for cohort in cohorts %}
+                <option {% if student.second_chance_cohort.id == cohort.id %}selected{% endif %} value="{{ cohort.id }}">Transfer to {{ cohort.name }}</option>
+            {% endfor %}
+        </select>
+        <input type="hidden" value="{{ student.id }}" name="student" />
+        <button>Update</button>
+    </form>
+
     <h2>Scores</h2>
     <report>
         <classroom>Intro to Variables: {{ scores.intro_variables_percent|stringformat:"d%%" }}</classroom>
