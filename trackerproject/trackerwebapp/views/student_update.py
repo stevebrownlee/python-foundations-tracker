@@ -4,7 +4,10 @@ from ..models import Student, Cohort
 
 def update(student_id, cohort):
     student = Student.objects.get(pk=student_id)
-    student.cohort = Cohort.objects.get(pk=cohort)
+    if cohort == "null":
+        student.cohort = None
+    else:
+        student.cohort = Cohort.objects.get(pk=cohort)
     student.save()
 
 

@@ -12,6 +12,7 @@
         {% csrf_token %}
         Cohort: <select name="cohort">
             <option value="">Choose student's cohort...</option>
+            <option value="null">Not a current student</option>
             {% for cohort in cohorts %}
                 <option {% if student.cohort.id == cohort.id %}selected{% endif %} value="{{ cohort.id }}">{{ cohort.name }}</option>
             {% endfor %}
