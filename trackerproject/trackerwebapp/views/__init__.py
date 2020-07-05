@@ -9,3 +9,10 @@ from .student_update import quick_student_update
 from .dashboard import dashboard
 from .student_list import student_list
 from .student_withdrawal import student_withdrawal
+from .import_functions import import_functions
+from .import_functions import import_iteration
+from .import_functions import import_conditions
+from .import_functions import import_intro_variables
+from .import_functions import import_intro_arrays
+from .import_functions import import_intro_objects
+from .import_functions import import_intro_functions
