@@ -29,8 +29,11 @@ def submission(request):
 
     if sub['submission']['status'] == "complete":
         try:
+            print("Checking if submission already exists for student...")
             already_recorded = Submission.objects.get(student=student, classroom=classroom, exercise=sub['assignment']['name'])
+            print("Submission exists. Exiting...")
         except Submission.DoesNotExist:
+            print("Submission does not exists. Creating...")
             submission = Submission()
             submission.time_submitted = sub['submission']['time_submitted']
             submission.teacher_url = sub['submission']['teacher_url']

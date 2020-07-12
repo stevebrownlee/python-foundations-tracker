@@ -31,5 +31,6 @@ urlpatterns = [
     path('submissions/', submission_list, name='submission_list'),
     path('studentupdate/', student_update, name='student_update'),
     path('withdraw/', student_withdrawal, name='student_withdrawal'),
+    path('transfer/', student_transfer, name='student_transfer'),
     path('quickupdate/', quick_student_update, name='quick_student_update'),
 ]

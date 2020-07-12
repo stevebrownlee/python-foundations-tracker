@@ -8,6 +8,7 @@ from .students.student_update import student_update
 from .students.student_update import quick_student_update
 from .students.student_list import student_list
 from .students.student_withdrawal import student_withdrawal
+from .students.student_transfer import student_transfer
 from .dashboard import dashboard
 from .import_functions import import_functions
 from .import_functions import import_iteration

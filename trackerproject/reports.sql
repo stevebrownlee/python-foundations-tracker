@@ -1,5 +1,6 @@
 select * from trackerwebapp_submission;
 select * from trackerwebapp_classroom;
+select * from trackerwebapp_studentcohort;
 select * from trackerwebapp_cohort;
 select * from trackerwebapp_student s;
 

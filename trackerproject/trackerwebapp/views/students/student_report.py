@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from ...models import Submission, Student, Cohort
+from ...models import Submission, Student, Cohort, StudentCohort
 
 VARIABLES_INTRO_CLASSROOM_EXERCISES = 7
 ARRAYS_INTRO_CLASSROOM_EXERCISES = 11
@@ -21,6 +21,7 @@ def student_report(request, student_id):
 
         student = Student.objects.get(pk=student_id)
         submissions = Submission.objects.filter(student=student)
+        cohort_history = StudentCohort.objects.filter(student=student)
 
         submissions.order_by('classroom')
         for submission in submissions:
@@ -60,6 +61,7 @@ def student_report(request, student_id):
             'submissions': submissions,
             'scores': scores,
             'cohorts': cohorts,
+            'cohort_history': cohort_history,
         }
 
         return render(request, template, context)

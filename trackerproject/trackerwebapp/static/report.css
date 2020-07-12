@@ -5,3 +5,15 @@ classroom {
 .input--cohort {
     width: 12rem;
 }
+
+.cohort_info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: nowrap;
+}
+
+.cohort_info__section {
+    flex-basis: 28%;
+    text-align: center;
+}
