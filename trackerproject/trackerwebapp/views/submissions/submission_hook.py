@@ -8,7 +8,6 @@ from ...models import Student, Classroom, Submission
 @csrf_exempt
 def submission(request):
     sub = json.loads(request.body.decode("utf-8"))
-    print(sub)
 
     try:
         student = Student.objects.get(replit_id=sub['student']['id'])
@@ -29,9 +28,7 @@ def submission(request):
 
     if sub['submission']['status'] == "complete":
         try:
-            print("Checking if submission already exists for student...")
             already_recorded = Submission.objects.get(student=student, classroom=classroom, exercise=sub['assignment']['name'])
-            print("Submission exists. Exiting...")
         except Submission.DoesNotExist:
             print("Submission does not exists. Creating...")
             submission = Submission()
