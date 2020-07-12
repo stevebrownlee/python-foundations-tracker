@@ -17,3 +17,8 @@ classroom {
     flex-basis: 28%;
     text-align: center;
 }
+
+.initial_cohort {
+    font-size: 1.2rem;
+    color: firebrick;
+}

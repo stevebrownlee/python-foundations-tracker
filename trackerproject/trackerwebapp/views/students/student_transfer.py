@@ -15,6 +15,7 @@ def student_transfer(request):
         transfer = StudentCohort()
         transfer.student = student
         transfer.cohort = cohort
+        transfer.initial = False
         transfer.save()
 
         return redirect(reverse('student_report', kwargs={'student_id': student_id}))

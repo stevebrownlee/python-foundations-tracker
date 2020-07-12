@@ -16,9 +16,8 @@
                 {% csrf_token %}
                 <select name="cohort">
                     <option value="">Accepted to...</option>
-                    <option value="null">Not a current student</option>
                     {% for cohort in cohorts %}
-                        <option {% if student.cohort.id == cohort.id %}selected{% endif %} value="{{ cohort.id }}">{{ cohort.name }}</option>
+                        <option value="{{ cohort.id }}">{{ cohort.name }}</option>
                     {% endfor %}
                 </select>
                 <input type="hidden" value="{{ student.id }}" name="student" />
@@ -54,7 +53,9 @@
     <h2>Cohort History</h2>
     <ol>
     {% for entry in cohort_history %}
-        <li>Assigned to {{ entry.cohort.name }} on {{ entry.timestamp|date:"M d, Y" }}</li>
+        <li {% if entry.initial == True %}class="initial_cohort"{% endif %}>
+            Assigned to {{ entry.cohort.name }} on {{ entry.timestamp|date:"M d, Y" }}
+        </li>
     {% endfor %}
     </ol>
 

@@ -16,3 +16,4 @@ class StudentCohort(models.Model):
                                related_name="studentcohorts")
 
     timestamp = models.DateField(default=datetime.date.today, null=True, blank=True)
+    initial = models.BooleanField(default=False, null=True, blank=True)
