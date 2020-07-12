@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse
-from ..models import Cohort
+from ...models import Cohort
 
 def cohorts(request):
     if request.method == 'POST':

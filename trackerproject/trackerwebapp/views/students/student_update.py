@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse
-from ..models import Student, Cohort
+from ...models import Student, Cohort
 
 def update(student_id, cohort):
     student = Student.objects.get(pk=student_id)

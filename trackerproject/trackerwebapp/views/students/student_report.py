@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from ..models import Submission, Student, Cohort
+from ...models import Submission, Student, Cohort
 
 VARIABLES_INTRO_CLASSROOM_EXERCISES = 7
 ARRAYS_INTRO_CLASSROOM_EXERCISES = 11

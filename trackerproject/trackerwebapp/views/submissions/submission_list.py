@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from ..models import Submission, Cohort
+from ...models import Submission, Cohort
 
 def submission_list(request):
     if request.method == 'GET':

@@ -28,7 +28,7 @@ def create_submission(student, classroom, exercise):
 
 
 def import_functions(request):
-    with open('/home/steve/foundations-tracker/trackerproject/trackerwebapp/JavaScript_Functions.csv', 'r') as students_file:
+    with open('/home/steve/foundations-tracker/trackerproject/trackerwebapp/imports/JavaScript_Functions.csv', 'r') as students_file:
         students = csv.reader(students_file)
 
         for _student in students:
@@ -63,7 +63,7 @@ def import_functions(request):
 
 def import_iteration(request):
     assignments = ['Simple iteration of a collection','Building a sentence','Using the Power of of','Nested loops','Adults only','Using iteration to filter a collection','Using iteration to create a new collection']
-    with open('/home/steve/foundations-tracker/trackerproject/trackerwebapp/Iteration_with_JavaScript.csv', 'r') as students_file:
+    with open('/home/steve/foundations-tracker/trackerproject/trackerwebapp/imports/Iteration_with_JavaScript.csv', 'r') as students_file:
         students = csv.reader(students_file)
 
         for _student in students:
@@ -97,7 +97,7 @@ def import_iteration(request):
 
 def import_conditions(request):
     assignments = ['Single Conditions','Multiple Conditions','Switch Statement','Nested Conditions','Challenge!']
-    with open('/home/steve/foundations-tracker/trackerproject/trackerwebapp/JavaScript_Conditions.csv', 'r') as students_file:
+    with open('/home/steve/foundations-tracker/trackerproject/trackerwebapp/imports/JavaScript_Conditions.csv', 'r') as students_file:
         students = csv.reader(students_file)
 
         for _student in students:
@@ -129,7 +129,7 @@ def import_conditions(request):
 
 def import_intro_variables(request):
     assignments = ['Part 1: Variables and Values','Part 2: String Values in Variables','Part 3: "Scary" Math with Variables','Part 4: Multi-line Strings','Part 5: Ill Logical Variables','Review: Variables','Part 6: More or Less Party']
-    with open('/home/steve/foundations-tracker/trackerproject/trackerwebapp/Introduction_to_JavaScript_Variables.csv', 'r') as students_file:
+    with open('/home/steve/foundations-tracker/trackerproject/trackerwebapp/imports/Introduction_to_JavaScript_Variables.csv', 'r') as students_file:
         students = csv.reader(students_file)
 
         for _student in students:
@@ -163,7 +163,7 @@ def import_intro_variables(request):
 
 def import_intro_arrays(request):
     assignments = ['Part 1: Cleaning the Dishes','Part 2: Programming Topics','Part 4: Fast Food Worker','Part 5: Yearly Grocery Costs','Part 6: Average Miles','Part 7: Sleep and Moods','Part 8: How Do You Like Your Coffee?','Review: Iteration','Introduction and Syntax','Part 9: Split Personalities','Part 3: The Hairy Potter']
-    with open('/home/steve/foundations-tracker/trackerproject/trackerwebapp/Introduction_to_Arrays_and_Iteration.csv', 'r') as students_file:
+    with open('/home/steve/foundations-tracker/trackerproject/trackerwebapp/imports/Introduction_to_Arrays_and_Iteration.csv', 'r') as students_file:
         students = csv.reader(students_file)
 
         for _student in students:
@@ -201,7 +201,7 @@ def import_intro_arrays(request):
 
 def import_intro_objects(request):
     assignments = ['Introduction and Syntax','Flower Shop','Doctor Office Schedule','Sales Associate','Librarian and the Book','GoldFish Tanks','Voting Booth']
-    with open('/home/steve/foundations-tracker/trackerproject/trackerwebapp/Introduction_to_Objects.csv', 'r') as students_file:
+    with open('/home/steve/foundations-tracker/trackerproject/trackerwebapp/imports/Introduction_to_Objects.csv', 'r') as students_file:
         students = csv.reader(students_file)
 
         for _student in students:
@@ -235,7 +235,7 @@ def import_intro_objects(request):
 
 def import_intro_functions(request):
     assignments = ['Introduction and Syntax','Return to Sender','Deconstruction: Calculator','Deconstruction: Car Factory','Deconstruction: An Introduction','Deconstruction: Making Pottery for Profit','Deconstruction: Candy Treats','Converting Objects to Strings','Function Flow: Introduction','Function Flow: Add Then Multiply','Function Flow: Adding Properties','Function Flow: Candy','Paint the House','Storing Return Values','Storing Two Return Values']
-    with open('/home/steve/foundations-tracker/trackerproject/trackerwebapp/Introduction_to_Functions.csv', 'r') as students_file:
+    with open('/home/steve/foundations-tracker/trackerproject/trackerwebapp/imports/Introduction_to_Functions.csv', 'r') as students_file:
         students = csv.reader(students_file)
 
         for _student in students:

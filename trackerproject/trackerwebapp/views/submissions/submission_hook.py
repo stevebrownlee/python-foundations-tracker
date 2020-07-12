@@ -2,7 +2,7 @@ import json
 from django.http import HttpResponse
 from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import csrf_exempt
-from ..models import Student, Classroom, Submission
+from ...models import Student, Classroom, Submission
 
 @require_POST
 @csrf_exempt

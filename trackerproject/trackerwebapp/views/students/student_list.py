@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse
-from ..models import Student, Cohort
+from ...models import Student, Cohort
 
 def student_list(request):
     if request.method == 'GET':

@@ -25,7 +25,11 @@ SECRET_KEY = 'c$oe%0xa8uj)jdoiks4jjd+3yzg6^8kx7!hx8r%w(=hk=#2&6j'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['tracker.nss.team']
+ALLOWED_HOSTS = [
+    'tracker.nss.team',
+    '127.0.0.1',
+    'localhost',
+]
 
 
 # Application definition
