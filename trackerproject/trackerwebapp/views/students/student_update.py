@@ -7,9 +7,14 @@ def student_update(request):
         cohort = request.POST.get('cohort', None)
         student = request.POST.get('student', None)
 
+        try:
+            StudentCohort.objects.get(student_id=student, initial=True).delete()
+        except StudentCohort.DoesNotExist:
+            pass
+
         transfer = StudentCohort()
-        transfer.student = student
-        transfer.cohort = cohort
+        transfer.student = Student.objects.get(pk=student)
+        transfer.cohort = Cohort.objects.get(pk=cohort)
         transfer.initial = True
         transfer.save()
 
@@ -21,12 +26,14 @@ def quick_student_update(request):
         cohort = request.POST.get('cohortSelect', None)
         student = request.POST.get('student', None)
 
-        cohort = request.POST.get('cohort', None)
-        student = request.POST.get('student', None)
+        try:
+            StudentCohort.objects.get(student_id=student, initial=True).delete()
+        except StudentCohort.DoesNotExist:
+            pass
 
         transfer = StudentCohort()
-        transfer.student = student
-        transfer.cohort = cohort
+        transfer.student = Student.objects.get(pk=student)
+        transfer.cohort = Cohort.objects.get(pk=cohort)
         transfer.initial = True
         transfer.save()
 
