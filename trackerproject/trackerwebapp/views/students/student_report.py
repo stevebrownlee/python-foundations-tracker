@@ -23,6 +23,8 @@ def student_report(request, student_id):
         submissions = Submission.objects.filter(student=student)
         cohort_history = StudentCohort.objects.filter(student=student)
 
+        student_assigned_cohort = StudentCohort.objects.filter(student=student, initial=True).first()
+
         submissions.order_by('classroom')
         for submission in submissions:
             if submission.classroom.title == 'Iteration with JavaScript':
@@ -62,6 +64,7 @@ def student_report(request, student_id):
             'scores': scores,
             'cohorts': cohorts,
             'cohort_history': cohort_history,
+            'student_assigned_cohort': student_assigned_cohort,
         }
 
         return render(request, template, context)

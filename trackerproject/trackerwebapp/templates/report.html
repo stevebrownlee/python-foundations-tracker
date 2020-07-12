@@ -17,7 +17,8 @@
                 <select name="cohort">
                     <option value="">Accepted to...</option>
                     {% for cohort in cohorts %}
-                        <option value="{{ cohort.id }}">{{ cohort.name }}</option>
+                        <option {% if student_assigned_cohort.cohort.id == cohort.id%} selected {% endif %}
+                            value="{{ cohort.id }}">{{ cohort.name }}</option>
                     {% endfor %}
                 </select>
                 <input type="hidden" value="{{ student.id }}" name="student" />
