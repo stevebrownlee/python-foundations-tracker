@@ -1,7 +1,6 @@
 import sqlite3
 from django.shortcuts import render
-from trackerwebapp.models import student
-from ...models import Student, Cohort, StudentCohort
+from ...models import Student, Cohort
 import os
 
 
@@ -42,14 +41,8 @@ def student_list(request):
                 student.cohort_id = row['cohort_id']
                 student.initial_cohort = row['initial']
 
-                print(student.cohort_name)
                 all_students.append(student)
 
-
-
-
-
-        students = Student.objects.all().order_by('-id')
         cohorts = Cohort.objects.all().order_by('-name')
 
         template = 'student_list.html'

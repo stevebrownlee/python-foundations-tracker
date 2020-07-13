@@ -1,19 +1,15 @@
 @import url("https://fonts.googleapis.com/css?family=Comfortaa|Patua+One");
-
 /*Typography
 --------------------------------------------------------------*/
-body,
-button,
-input,
-select,
-textarea {
-	color: #404040;
+
+body, button, input, select, textarea {
+    color: #404040;
     font-family: "Comfortaa", Arial, sans-serif;
-	font-size: 14px;
-	line-height: 1.5;
+    font-size: 14px;
+    line-height: 1.5;
 }
 
-h1,h2,h3,h4,h5,h6 {
+h1, h2, h3, h4, h5, h6 {
     font-weight: 900;
     font-family: "Patua One", serif;
     letter-spacing: 2px;
@@ -36,3 +32,39 @@ h1,h2,h3,h4,h5,h6 {
     font-size: 1rem;
     margin: 0 1rem;
 }
+
+.content--collapsible {
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+
+.collapsible {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+}
+
+.active, .collapsible:hover {
+    background-color: #ccc;
+}
+
+.collapsible:after {
+    content: '\02795'; /* Unicode character for "plus" sign (+) */
+    font-size: 13px;
+    color: white;
+    float: right;
+    margin-left: 5px;
+  }
+
+  .active:after {
+    content: "\2796"; /* Unicode character for "minus" sign (-) */
+  }

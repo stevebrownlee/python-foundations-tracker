@@ -1,5 +1,39 @@
+report {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
 classroom {
     display: block;
+    border: 1px dotted lightblue;
+    padding: 1rem;
+    flex-basis: 20%;
+    text-align: center;
+}
+
+classroomname {
+    display: block;
+}
+
+classroomscore {
+    font-size: 2rem;
+}
+
+.report {
+    margin: 4rem 15% 0 15%;
+}
+
+.score--high {
+    color: mediumseagreen;
+}
+
+.score--warning {
+    color: rgb(198, 181, 1);
+}
+
+.score--alert {
+    color: crimson;
 }
 
 .input--cohort {
@@ -9,7 +43,7 @@ classroom {
 .cohort_info {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
     flex-wrap: nowrap;
 }
 
@@ -21,4 +55,35 @@ classroom {
 .initial_cohort {
     font-size: 1.2rem;
     color: firebrick;
+}
+
+.report_header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: chocolate;
+    padding: 0 2rem 1rem 2rem;
+    color: #ffd07e;
+}
+
+.report_header__name {
+    font-size: 2rem;
+    margin: 0;
+    padding: 1.75rem 0 0 0;
+    text-align: center;
+}
+
+.initial_info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.initial_info__cohort {
+    flex: 3;
+}
+
+.initial_info__progress {
+    flex: 2;
+    font-size: 1rem;
 }

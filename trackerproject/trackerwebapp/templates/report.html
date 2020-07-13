@@ -6,11 +6,16 @@
     <link rel="stylesheet" href="{% static 'report.css' %}">
 {% endblock %}
 
-{% block content %}
-    <h1>Report for: {{ student.first_name }} {{ student.last_name }}</h1>
+{% block scripts %}
+    <script src="{% static 'scripts/student_report.js' %}"></script>
+{% endblock %}
 
-    <section class="cohort_info">
-        <div class="cohort_info__section">
+
+{% block content %}
+
+    <header class="report_header">
+        <h1 class="report_header__name">{{ student.first_name }} {{ student.last_name }}</h1>
+        <div class="report_header__cohort">
             <h2>Accepted Cohort</h2>
             <form action="{% url 'student_update' %}" method="post">
                 {% csrf_token %}
@@ -25,65 +30,136 @@
                 <button>Update</button>
             </form>
         </div>
+    </header>
 
-        <div class="cohort_info__section">
-            <h2>Transfer</h2>
-            <form action="{% url 'student_transfer' %}" method="post">
-                {% csrf_token %}
-                <select name="transfer_cohort">
-                    <option value="">Transferred to...</option>
-                    {% for cohort in cohorts %}
-                        <option value="{{ cohort.id }}">Transfer to {{ cohort.name }}</option>
+    <main class="report">
+        <article class="initial_info">
+            <section class="initial_info__progress">
+                <h2>Foundations Course Progress</h2>
+                <report>
+                    <classroom>
+                        <classroomname>
+                            Intro to Variables
+                        </classroomname>
+                        <classroomscore score="{{ scores.intro_variables_percent }}">
+                            {{ scores.intro_variables_percent|stringformat:"d%%" }}
+                        </classroomscore>
+                    </classroom>
+                    <classroom>
+                        <classroomname>
+                            Intro to Arrays
+                        </classroomname>
+                        <classroomscore score="{{ scores.intro_iteration_percent }}">
+                            {{ scores.intro_iteration_percent|stringformat:"d%%" }}
+                        </classroomscore>
+                    </classroom>
+                    <classroom>
+                        <classroomname>
+                            Intro to Objects
+                        </classroomname>
+                        <classroomscore score="{{ scores.intro_objects_percent }}">
+                            {{ scores.intro_objects_percent|stringformat:"d%%" }}
+                        </classroomscore>
+                    </classroom>
+                    <classroom>
+                        <classroomname>
+                            Intro to Functions
+                        </classroomname>
+                        <classroomscore score="{{ scores.intro_functions_percent }}">
+                            {{ scores.intro_functions_percent|stringformat:"d%%" }}
+                        </classroomscore>
+                    </classroom>
+                    <classroom>
+                        <classroomname>
+                            Conditions Practice
+                        </classroomname>
+                        <classroomscore score="{{ scores.condition_percent }}">
+                            {{ scores.condition_percent|stringformat:"d%%" }}
+                        </classroomscore>
+                    </classroom>
+                    <classroom>
+                        <classroomname>
+                            Arrays Practice
+                        </classroomname>
+                        <classroomscore score="{{ scores.iteration_percent }}">
+                            {{ scores.iteration_percent|stringformat:"d%%" }}
+                        </classroomscore>
+                    </classroom>
+                    <classroom>
+                        <classroomname>
+                            Functions Practice
+                        </classroomname>
+                        <classroomscore score="{{ scores.function_percent }}">
+                            {{ scores.function_percent|stringformat:"d%%" }}
+                        </classroomscore>
+                    </classroom>
+                    <classroom>
+                    </classroom>
+                </report>
+            </section>
+        </article>
+
+        <h2>Submission History ({{ submissions|length }})</h2>
+        <button type="button" class="collapsible">View All Submissions</button>
+
+        <article class="content--collapsible">
+            {% for submission in submissions %}
+                <section class="submission">
+                    <div class="submission__classroom">
+                        {{ submission.classroom.title }}
+                    </div>
+                    <div class="submission__exercise">
+                        {{ submission.exercise }}
+                    </div>
+                    <div class="submission__timestamp">
+                        {{ submission.time_submitted|date:"M d, Y H:i" }}
+                    </div>
+                </section>
+            {% endfor %}
+        </article>
+
+
+        <section class="cohort_info">
+            <div class="cohort_info__section">
+                <h2>Transfer</h2>
+                <form action="{% url 'student_transfer' %}" method="post">
+                    {% csrf_token %}
+                    <select name="transfer_cohort">
+                        <option value="">Transferred to...</option>
+                        {% for cohort in cohorts %}
+                            <option value="{{ cohort.id }}">Transfer to {{ cohort.name }}</option>
+                        {% endfor %}
+                    </select>
+                    <input type="hidden" value="{{ student.id }}" name="student" />
+                    <button>Update</button>
+                </form>
+            </div>
+
+            <div class="cohort_info__section">
+                <h2>Withdrawal</h2>
+                <form action="{% url 'student_withdrawal' %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" value="{{ student.id }}" name="student" />
+                    <button>Mark as withdrawn</button>
+                </form>
+            </div>
+
+            <section class="initial_info__cohort">
+                <h2>Cohort History</h2>
+                <ol>
+                    {% for entry in cohort_history %}
+                        <li {% if entry.initial == True %}class="initial_cohort"{% endif %}>
+                            Assigned to {{ entry.cohort.name }} on {{ entry.timestamp|date:"M d, Y" }}
+                        </li>
                     {% endfor %}
-                </select>
-                <input type="hidden" value="{{ student.id }}" name="student" />
-                <button>Update</button>
-            </form>
-        </div>
+                    {% if student.withdrawn %}
+                        <li>Student withdrew from NSS on {{ student.withdrawn_date }}</li>
+                    {% endif %}
+                </ol>
+            </section>
+        </section>
 
-        <div class="cohort_info__section">
-            <h2>Withdrawal</h2>
-            <form action="{% url 'student_withdrawal' %}" method="post">
-                {% csrf_token %}
-                <input type="hidden" value="{{ student.id }}" name="student" />
-                <button>Mark as withdrawn</button>
-            </form>
-        </div>
-    </section>
+    </main>
 
-    <h2>Cohort History</h2>
-    <ol>
-    {% for entry in cohort_history %}
-        <li {% if entry.initial == True %}class="initial_cohort"{% endif %}>
-            Assigned to {{ entry.cohort.name }} on {{ entry.timestamp|date:"M d, Y" }}
-        </li>
-    {% endfor %}
-    </ol>
-
-    <h2>Foundations Course Progress</h2>
-    <report>
-        <classroom>Intro to Variables: {{ scores.intro_variables_percent|stringformat:"d%%" }}</classroom>
-        <classroom>Intro to Arrays: {{ scores.intro_iteration_percent|stringformat:"d%%" }}</classroom>
-        <classroom>Intro to Objects: {{ scores.intro_objects_percent|stringformat:"d%%" }}</classroom>
-        <classroom>Intro to Functions: {{ scores.intro_functions_percent|stringformat:"d%%" }}</classroom>
-        <classroom>Conditions Practice: {{ scores.condition_percent|stringformat:"d%%" }}</classroom>
-        <classroom>Arrays Practice: {{ scores.iteration_percent|stringformat:"d%%" }}</classroom>
-        <classroom>Functions Practice: {{ scores.function_percent|stringformat:"d%%" }}</classroom>
-    </report>
-
-    <h2>Submission History</h2>
-    {% for submission in submissions %}
-    <section class="submission">
-        <div class="submission__classroom">
-            {{ submission.classroom.title }}
-        </div>
-        <div class="submission__exercise">
-            {{ submission.exercise }}
-        </div>
-        <div class="submission__timestamp">
-            {{ submission.time_submitted|date:"M d, Y H:i" }}
-        </div>
-    </section>
-    {% endfor %}
 
 {% endblock %}

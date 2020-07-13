@@ -29,4 +29,5 @@ select
 from trackerwebapp_student s
 left join trackerwebapp_studentcohort sc on sc.student_id = s.id
 left join trackerwebapp_cohort c on sc.cohort_id = c.id
+where sc.initial is not 0
 ;
