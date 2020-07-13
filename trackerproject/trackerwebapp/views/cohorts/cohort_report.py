@@ -13,7 +13,7 @@ def cohort_report(request, cohort_id):
     if request.method == 'GET':
 
         cohort = Cohort.objects.get(pk=cohort_id)
-        students = Student.objects.filter(cohort=cohort)
+        students = Student.objects.filter(studentcohorts__cohort=cohort)
         student_summaries = []
 
         for student in students:

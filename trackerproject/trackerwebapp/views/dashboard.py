@@ -6,7 +6,7 @@ def dashboard(request):
     if request.method == 'GET':
 
         cohorts = Cohort.objects.all() \
-            .annotate(student_count=Count('students')) \
+            .annotate(student_count=Count('studentcohorts__student')) \
             .order_by('-name')
 
         template = 'dashboard.html'
