@@ -10,14 +10,14 @@ class Submission(models.Model):
     exercise = models.CharField(max_length=256)
     student = models.ForeignKey(
         Student,
-        related_name='students',
+        related_name='submissions',
         null=False,
         blank=False,
         on_delete=models.CASCADE
     )
     classroom = models.ForeignKey(
         Classroom,
-        related_name='classrooms',
+        related_name='submissions',
         null=False,
         blank=False,
         on_delete=models.CASCADE
