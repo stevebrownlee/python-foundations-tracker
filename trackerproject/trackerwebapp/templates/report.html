@@ -125,7 +125,8 @@
                 <form action="{% url 'student_transfer' %}" method="post">
                     {% csrf_token %}
                     <select name="transfer_cohort">
-                        <option value="">Transferred to...</option>
+                        <option value="0">Transferred to...</option>
+                        <option value="reset">-- Reset --</option>
                         {% for cohort in cohorts %}
                             <option value="{{ cohort.id }}">Transfer to {{ cohort.name }}</option>
                         {% endfor %}
