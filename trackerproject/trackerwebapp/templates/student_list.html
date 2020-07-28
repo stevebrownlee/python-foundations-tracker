@@ -26,7 +26,7 @@
                     <form class="cohortForm--{{ student.id }}" action="{% url 'quick_student_update' %}" method="post">
                         {% csrf_token %}
                         <select name="cohortSelect" class="cohortSelect" id="cohortSelect--{{ student.id }}">
-                            <option value="">Assign...</option>
+                            <option value="0">Assign...</option>
                             {% for cohort in cohorts %}
                                 <option value="{{ cohort.id }}"
                                     {% if student.cohort_id == cohort.id %}selected{% endif %}

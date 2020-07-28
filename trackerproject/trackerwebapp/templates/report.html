@@ -19,8 +19,8 @@
             <h2>Accepted Cohort</h2>
             <form action="{% url 'student_update' %}" method="post">
                 {% csrf_token %}
-                <select name="cohort">
-                    <option value="">Accepted to...</option>
+                <select name="cohortSelect">
+                    <option value="0">Assign...</option>
                     {% for cohort in cohorts %}
                         <option {% if student_assigned_cohort.cohort.id == cohort.id%} selected {% endif %}
                             value="{{ cohort.id }}">{{ cohort.name }}</option>

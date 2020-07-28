@@ -4,7 +4,7 @@ from ...models import Student, Cohort, StudentCohort
 
 def student_update(request):
     if request.method == 'POST':
-        cohort = request.POST.get('cohort', None)
+        cohort = request.POST.get('cohortSelect', None)
         student = request.POST.get('student', None)
 
         try:
@@ -12,11 +12,12 @@ def student_update(request):
         except StudentCohort.DoesNotExist:
             pass
 
-        transfer = StudentCohort()
-        transfer.student = Student.objects.get(pk=student)
-        transfer.cohort = Cohort.objects.get(pk=cohort)
-        transfer.initial = True
-        transfer.save()
+        if cohort != "0":
+            transfer = StudentCohort()
+            transfer.student = Student.objects.get(pk=student)
+            transfer.cohort = Cohort.objects.get(pk=cohort)
+            transfer.initial = True
+            transfer.save()
 
         return redirect(reverse('student_report', kwargs={'student_id': student}))
 
@@ -31,10 +32,11 @@ def quick_student_update(request):
         except StudentCohort.DoesNotExist:
             pass
 
-        transfer = StudentCohort()
-        transfer.student = Student.objects.get(pk=student)
-        transfer.cohort = Cohort.objects.get(pk=cohort)
-        transfer.initial = True
-        transfer.save()
+        if cohort != "0":
+            transfer = StudentCohort()
+            transfer.student = Student.objects.get(pk=student)
+            transfer.cohort = Cohort.objects.get(pk=cohort)
+            transfer.initial = True
+            transfer.save()
 
         return redirect(reverse(redirect_to))
