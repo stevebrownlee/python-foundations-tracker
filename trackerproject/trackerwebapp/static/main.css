@@ -68,3 +68,13 @@ h1, h2, h3, h4, h5, h6 {
   .active:after {
     content: "\2796"; /* Unicode character for "minus" sign (-) */
   }
+
+  .student-search {
+      display: flex;
+      flex-direction: row;
+  }
+
+  .student_search--name {
+      width: 20rem;
+      margin: 0 0 2rem 0;
+  }

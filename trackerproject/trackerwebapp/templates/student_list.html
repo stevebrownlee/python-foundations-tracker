@@ -5,6 +5,12 @@
 
     <h1>Students</h1>
 
+    <form class="student_search" action="{% url 'student_search' %}" method="post">
+        {% csrf_token %}
+        <input type="text" autofocus class="student_search--name" name="student_name" placeholder="Enter part of the student name" />
+        <button>Submit</button>
+    </form>
+
     <article class="submissions">
         <section class="submission__headers">
             <div class="header header--student">

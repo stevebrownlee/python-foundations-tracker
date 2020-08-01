@@ -26,6 +26,7 @@ urlpatterns = [
     path('submission/', submission, name='submission_hook'),
     path('students/<int:student_id>/', student_report, name='student_report'),
     path('students/', student_list, name='student_list'),
+    path('students/', student_list, name='student_search'),
     path('cohorts/', cohorts, name='cohorts'),
     path('cohorts/<int:cohort_id>/', cohort_report, name='cohort_report'),
     path('submissions/', submission_list, name='submission_list'),
