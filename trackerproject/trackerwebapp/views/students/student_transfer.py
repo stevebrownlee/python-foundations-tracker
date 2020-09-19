@@ -13,18 +13,21 @@ def student_transfer(request):
 
         if new_cohort == "reset":
             try:
-                StudentCohort.objects.get(
-                    student_id=student, initial=False).delete()
+                transfer = StudentCohort.objects.get(
+                    student=student, initial=False).delete()
             except StudentCohort.DoesNotExist:
                 pass
 
         elif new_cohort != "0":
             cohort = Cohort.objects.get(pk=new_cohort)
 
-            transfer = StudentCohort()
-            transfer.student = student
-            transfer.cohort = cohort
-            transfer.initial = False
-            transfer.save()
+            try:
+                existing = StudentCohort.objects.get(cohort=cohort, student=student)
+            except StudentCohort.DoesNotExist:
+                transfer = StudentCohort()
+                transfer.student = student
+                transfer.cohort = cohort
+                transfer.initial = False
+                transfer.save()
 
         return redirect(reverse('student_report', kwargs={'student_id': student_id}))

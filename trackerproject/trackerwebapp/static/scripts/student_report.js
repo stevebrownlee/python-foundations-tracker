@@ -5,13 +5,13 @@ for (const scoreElement of scoreElements) {
     const score = parseFloat(scoreAttribute)
 
     switch (true) {
-        case ( score >= 80):
+        case ( score >= 85):
             scoreElement.classList.add("score--high")
             break;
-        case (score >= 50 && score < 80):
+        case (score >= 70 && score < 85):
             scoreElement.classList.add("score--warning")
             break;
-        case (score < 50):
+        case (score < 70):
             scoreElement.classList.add("score--alert")
             break;
     }

@@ -4,6 +4,8 @@ select * from trackerwebapp_studentcohort;
 select * from trackerwebapp_cohort;
 select * from trackerwebapp_student s;
 
+delete from trackerwebapp_studentcohort where id = 56;
+
 
 select s.first_name,
     s.last_name,
