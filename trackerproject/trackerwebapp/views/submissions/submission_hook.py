@@ -11,7 +11,7 @@ def submission(request):
     print(sub)
 
     try:
-        student = Student.objects.get(replit_id=sub['student']['id'])
+        student = Student.objects.get(sub['submissionData']['Your name'][0])
     except Student.DoesNotExist:
         student = Student()
         student.full_name = sub['submissionData']['Your name'][0]
