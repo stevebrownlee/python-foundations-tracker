@@ -18,26 +18,16 @@ def submission(request):
         student.save()
         print(student)
 
-    # try:
-    #     classroom = Classroom.objects.get(replit_id=sub['classroom']['id'])
-    # except Classroom.DoesNotExist:
-    #     classroom = Classroom()
-    #     classroom.replit_id = sub['classroom']['id']
-    #     classroom.title = sub['classroom']['name']
-    #     classroom.save()
-
-    # if sub['submission']['status'] == "complete":
-    #     try:
-    #         already_recorded = Submission.objects.get(student=student, classroom=classroom, exercise=sub['assignment']['name'])
-    #     except Submission.DoesNotExist:
-    #         print("Submission does not exists. Creating...")
-    #         submission = Submission()
-    #         submission.time_submitted = sub['submission']['time_submitted']
-    #         submission.teacher_url = sub['submission']['teacher_url']
-    #         submission.student_url = sub['submission']['student_url']
-    #         submission.exercise = sub['assignment']['name']
-    #         submission.student = student
-    #         submission.classroom = classroom
-    #         submission.save()
+    try:
+        already_recorded = Submission.objects.get(student=student, quiz_name=sub['formName'])
+    except Submission.DoesNotExist:
+        print("Submission does not exists. Creating...")
+        submission = Submission()
+        submission.time_submitted = sub['submissionData']['Timestamp'][0]
+        submission.quiz_name = sub['formName']
+        submission.score = sub['submissionData']['Score'][0]
+        submission.student = student
+        submission.save()
+        print(submission)
 
     return HttpResponse('Thank you')
