@@ -2,7 +2,7 @@ import json
 from django.http import HttpResponse
 from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import csrf_exempt
-from ...models import Student, Classroom, Submission
+from ...models import Student, Submission
 
 @require_POST
 @csrf_exempt
@@ -10,14 +10,13 @@ def submission(request):
     sub = json.loads(request.body.decode("utf-8"))
     print(sub)
 
-    # try:
-    #     student = Student.objects.get(replit_id=sub['student']['id'])
-    # except Student.DoesNotExist:
-    #     student = Student()
-    #     student.first_name = sub['student']['first_name']
-    #     student.last_name = sub['student']['last_name']
-    #     student.replit_id = sub['student']['id']
-    #     student.save()
+    try:
+        student = Student.objects.get(replit_id=sub['student']['id'])
+    except Student.DoesNotExist:
+        student = Student()
+        student.full_name = sub['submissionData']['Your name'][0]
+        student.save()
+        print(student)
 
     # try:
     #     classroom = Classroom.objects.get(replit_id=sub['classroom']['id'])
